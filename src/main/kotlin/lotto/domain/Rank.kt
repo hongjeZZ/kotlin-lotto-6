@@ -13,7 +13,7 @@ enum class Rank(
     FIRST(6, 2_000_000_000, "6개 일치 (2,000,000,000원) - ");
 
     fun getMessage(count: Int): String {
-        return "$message${count}개\n"
+        return "$message${count}개"
     }
 
     fun getPrize(rank: Rank): Int {

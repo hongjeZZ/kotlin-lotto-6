@@ -3,9 +3,10 @@ package lotto.domain
 import lotto.ui.InputManager
 import lotto.ui.OutputManager
 
-class LottoProgram {
-    private val inputManager = InputManager()
-    private val outputManager = OutputManager()
+class LottoProgram(
+    private val inputManager: InputManager,
+    private val outputManager: OutputManager
+) {
     private lateinit var lottoMachine: LottoMachine
     private lateinit var lottos: List<Lotto>
     private lateinit var winningLotto: WinningLotto

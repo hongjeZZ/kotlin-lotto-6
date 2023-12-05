@@ -11,17 +11,7 @@ class LottoResult {
 
     fun getRankCount(rank: Rank): Int = results[rank]!!
 
-    fun updateCount(rank: Rank) {
-        results.replace(rank, results.getValue(rank) + 1)
-    }
+    fun updateCount(rank: Rank) = results.replace(rank, results.getValue(rank) + 1)
 
-    override fun toString(): String {
-        return buildString {
-            for (rank in Rank.entries.filterNot { rank ->
-                rank == Rank.NONE
-            }) {
-                append(rank.getMessage(results[rank]!!))
-            }
-        }
-    }
+    fun getResult(): MutableMap<Rank, Int> = results
 }

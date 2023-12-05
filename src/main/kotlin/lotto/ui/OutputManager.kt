@@ -2,6 +2,7 @@ package lotto.ui
 
 import lotto.domain.Lotto
 import lotto.domain.LottoResult
+import lotto.domain.Rank
 
 class OutputManager {
     fun printPromptMessage(promptMessage: String) {
@@ -20,7 +21,7 @@ class OutputManager {
 
     private fun printLottoNumbers(lottos: List<Lotto>) {
         lottos.forEach { lotto ->
-            println(lotto)
+            println(lotto.getNumbers().sorted())
         }
         printBlankLine()
     }
@@ -29,7 +30,16 @@ class OutputManager {
         printBlankLine()
         println(WINNING_RESULT)
         println(LINE)
-        print(result)
+        printWinningDetails(result)
+    }
+
+    private fun printWinningDetails(result: LottoResult) {
+        val resultMap = result.getResult()
+        for (rank in Rank.entries.filterNot { rank ->
+            rank == Rank.NONE
+        }) {
+            println(rank.getMessage(resultMap[rank]!!))
+        }
     }
 
     fun printRateOfReturn(rateOfReturn: Double) {
